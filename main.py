@@ -1,8 +1,13 @@
-from fastapi import FastAPI
+"""Local proxy re-encryption service entry point.
 
-app = FastAPI()
+Run with::
 
+    uv run uvicorn main:app --reload
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+The SQLite database path is controlled by ``PRE_DB_PATH`` and defaults to
+``pre_data.db`` in the working directory.
+"""
+
+from pre.api import app
+
+__all__ = ["app"]
