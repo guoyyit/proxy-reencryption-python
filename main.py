@@ -1,8 +1,10 @@
-from fastapi import FastAPI
+"""Development entrypoint: `uv run uvicorn main:app`."""
 
-app = FastAPI()
+from app.api import app
 
+__all__ = ["app"]
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=False)
